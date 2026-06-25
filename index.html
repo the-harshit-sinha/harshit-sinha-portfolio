@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harshit Sinha — Finance & Accounts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #eef1f8;
+      --bg2:     #e6eaf4;
+      --white:   #ffffff;
+      --glass:   rgba(255,255,255,0.72);
+      --glass2:  rgba(255,255,255,0.50);
+      --border:  rgba(180,160,80,0.16);
+      --border-h:rgba(180,160,80,0.36);
+      --text:    #1a1e2e;
+      --muted:   #556080;
+      --muted2:  #7a83a0;
+      --navy:    #1a2f5e;
+      --navy2:   #243870;
+      --gold:    #b8922a;
+      --gold2:   #d4a840;
+      --gold-bg: rgba(184,146,42,0.07);
+      --font:    'Inter', sans-serif;
+      --serif:   'Playfair Display', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse at 15% 15%, rgba(26,47,94,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 85%, rgba(184,146,42,0.07) 0%, transparent 55%);
+      color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.7; overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(180,160,80,0.14);
+    }
+    .nav-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--navy); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; align-items: center; padding: 0; position: relative; overflow: hidden; }
+    .blob1 { position: absolute; top: -8%; left: -8%; width: 520px; height: 520px; border-radius: 50%; background: rgba(26,47,94,0.07); filter: blur(90px); z-index: 0; }
+    .blob2 { position: absolute; bottom: -5%; right: -8%; width: 420px; height: 420px; border-radius: 50%; background: rgba(184,146,42,0.08); filter: blur(80px); z-index: 0; }
+    .hero-inner { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 0 2.5rem; display: grid; grid-template-columns: 1fr 300px; gap: 4rem; align-items: center; }
+    .hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.2rem; }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--gold); display: inline-block; }
+    h1.hero-name { font-family: var(--serif); font-size: clamp(2.6rem, 5.5vw, 4.2rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 0.6rem; color: var(--navy); }
+    h1.hero-name span { color: var(--gold); }
+    .hero-designation { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; }
+    .hero-tagline { font-size: 0.98rem; color: var(--muted); max-width: 500px; margin-bottom: 2.5rem; line-height: 1.85; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-photo-wrap { width: 300px; height: 370px; border-radius: 16px; overflow: hidden; flex-shrink: 0; border: 3px solid rgba(255,255,255,0.95); box-shadow: 0 10px 48px rgba(26,47,94,0.15), 0 2px 8px rgba(184,146,42,0.08); }
+    .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+
+    .btn-navy { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--navy); color: #fff; text-decoration: none; padding: 0.75rem 1.8rem; border-radius: 8px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
+    .btn-navy:hover { background: var(--navy2); transform: translateY(-1px); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.75); color: var(--navy); text-decoration: none; padding: 0.75rem 1.8rem; border-radius: 8px; border: 1.5px solid var(--border-h); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; backdrop-filter: blur(8px); transition: border-color 0.2s, background 0.2s, transform 0.15s; }
+    .btn-ghost:hover { border-color: var(--gold); background: white; transform: translateY(-1px); }
+
+    section { padding: 6rem 0; }
+    .container { max-width: 980px; margin: 0 auto; padding: 0 2.5rem; }
+    .section-eyebrow { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem; }
+    .section-eyebrow .num { font-family: var(--serif); font-size: 1rem; font-weight: 700; }
+    .section-title { font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, 2.4rem); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 3rem; color: var(--navy); }
+    .section-title em { font-style: normal; color: var(--gold); }
+
+    /* ABOUT */
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 210px 1fr; gap: 3.5rem; align-items: start; }
+    .about-photo { width: 210px; height: 260px; border-radius: 12px; overflow: hidden; border: 2px solid rgba(255,255,255,0.95); box-shadow: 0 4px 24px rgba(26,47,94,0.12); }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .about-text p { color: var(--muted); margin-bottom: 0.9rem; font-size: 0.95rem; line-height: 1.8; }
+    .about-text p strong { color: var(--text); font-weight: 600; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
+    .skill-tag { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); border: 1.5px solid rgba(26,47,94,0.16); padding: 0.28rem 0.7rem; border-radius: 4px; background: rgba(255,255,255,0.75); backdrop-filter: blur(8px); }
+    .stats-row { display: flex; margin: 2rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.95); box-shadow: 0 2px 14px rgba(26,47,94,0.08); }
+    .stat-box { flex: 1; padding: 1rem; text-align: center; background: var(--glass); border-right: 1px solid rgba(180,160,80,0.14); }
+    .stat-box:last-child { border-right: none; }
+    .stat-num { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; color: var(--navy); }
+    .stat-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted2); margin-top: 0.2rem; }
+    .ach-wrap { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(180,160,80,0.18); }
+    .ach-label { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .ach-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .ach-list li { display: flex; align-items: flex-start; gap: 0.75rem; color: var(--muted); font-size: 0.875rem; line-height: 1.65; }
+    .ach-bullet { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: 9px; flex-shrink: 0; }
+
+    /* EXPERIENCE */
+    #experience { background: var(--white); }
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 0; width: 1.5px; background: rgba(184,146,42,0.28); }
+    .timeline-item { position: relative; padding: 0 0 2.8rem 1.5rem; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot { position: absolute; left: -2.05rem; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--gold); border: 2px solid white; box-shadow: 0 0 0 2px var(--gold); }
+    .tl-date { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; }
+    .tl-role { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.1rem; color: var(--navy); }
+    .tl-company { font-size: 0.82rem; color: var(--muted2); margin-bottom: 0.8rem; }
+    .tl-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.8; }
+
+    /* PROJECTS */
+    #projects { background: var(--bg); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.1rem; }
+    .project-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.92); border-radius: 14px; padding: 1.6rem; display: flex; flex-direction: column; box-shadow: 0 2px 16px rgba(26,47,94,0.07); transition: box-shadow 0.2s, transform 0.2s; }
+    .project-card:hover { box-shadow: 0 8px 30px rgba(26,47,94,0.14); transform: translateY(-3px); }
+    .proj-num { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: rgba(26,47,94,0.1); line-height: 1; margin-bottom: 0.75rem; }
+    .proj-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.45rem; color: var(--navy); }
+    .proj-desc { color: var(--muted); font-size: 0.82rem; flex: 1; margin-bottom: 1rem; line-height: 1.7; }
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .proj-tag { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.05em; color: var(--gold); border: 1px solid rgba(184,146,42,0.28); padding: 0.22rem 0.55rem; border-radius: 3px; text-transform: uppercase; background: var(--gold-bg); }
+
+    /* CERTS */
+    #certifications { background: var(--bg2); }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .cert-card { background: var(--glass); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.9); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 1.1rem 1.3rem; box-shadow: 0 2px 10px rgba(26,47,94,0.06); transition: box-shadow 0.2s, transform 0.15s; }
+    .cert-card:hover { box-shadow: 0 4px 20px rgba(26,47,94,0.12); transform: translateX(3px); }
+    .cert-source { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+    .cert-title { font-size: 0.88rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+    .cert-date { font-size: 0.72rem; color: var(--muted2); }
+
+    /* CONTACT */
+    #contact { background: var(--white); }
+    .contact-card { background: var(--glass); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.95); border-radius: 20px; padding: 3rem 3.5rem; max-width: 680px; box-shadow: 0 4px 32px rgba(26,47,94,0.10); }
+    .contact-desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.75rem; line-height: 1.8; }
+    .contact-email-link { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--serif); font-size: 1.15rem; color: var(--navy); text-decoration: none; border-bottom: 2px solid rgba(184,146,42,0.35); padding-bottom: 0.2rem; margin-bottom: 2rem; transition: color 0.2s, border-color 0.2s; }
+    .contact-email-link:hover { color: var(--gold); border-color: var(--gold); }
+    .contact-chips { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .chip { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--muted); background: rgba(255,255,255,0.8); backdrop-filter: blur(8px); border: 1.5px solid rgba(26,47,94,0.13); border-radius: 8px; padding: 0.55rem 1.1rem; font-size: 0.78rem; font-weight: 600; transition: color 0.2s, border-color 0.2s; }
+    .chip:hover { color: var(--navy); border-color: var(--gold); }
+
+    footer { text-align: center; padding: 2rem; background: var(--bg2); border-top: 1px solid rgba(180,160,80,0.14); color: var(--muted2); font-size: 0.75rem; letter-spacing: 0.04em; }
+    footer span { color: var(--gold); font-weight: 600; }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.7rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 6rem; }
+      .hero-photo-wrap { width: 200px; height: 250px; margin: 0 auto; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { width: 100%; height: 220px; }
+      section { padding: 4rem 0; }
+      .contact-card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Harshit Sinha</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">CA Intermediate &middot; Finance &amp; Accounts &middot; Kolkata</p>
+      <h1 class="hero-name">Harshit<br><span>Sinha.</span></h1>
+      <p class="hero-designation">B.Com Graduate &nbsp;&middot;&nbsp; Financial Analyst &nbsp;&middot;&nbsp; GST &amp; Tax Professional</p>
+      <p class="hero-tagline">A motivated finance professional skilled in Accounting, Taxation, GST, SAP FICO, Power BI, and Advanced Excel — bridging traditional finance with modern data analytics.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-navy">View Projects &rarr;</a>
+        <a href="#contact" class="btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="harshit-photo.jpg" alt="Harshit Sinha" />
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <p class="section-eyebrow"><span class="num">01</span>&nbsp;&nbsp;About Me</p>
+    <h2 class="section-title">Who I <em>Am</em></h2>
+    <div class="about-grid">
+      <div class="about-photo"><img src="harshit-photo.jpg" alt="Harshit Sinha" /></div>
+      <div class="about-text">
+        <p>I'm <strong>Harshit Sinha</strong>, a B.Com (Hons.) graduate from BSK College, Dhanbad, currently pursuing <strong>CA Intermediate from ICAI</strong>. I specialize in Accounting, Taxation (GST &amp; TDS), Financial Reporting, and Business Data Analytics.</p>
+        <p>With hands-on experience in <strong>Tally ERP9, Tally Prime, SAP FICO S/4HANA, Power BI, and Advanced Excel with VBA</strong>, I combine traditional finance knowledge with modern tools to deliver accurate, insightful financial reporting.</p>
+        <p>Beyond numbers, I was <strong>Head Boy</strong> at Loyola School, a State-Level Chess player, and a Gold Medalist in the District-Level Cyber &amp; Mathematics Olympiad.</p>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-num">2+</div><div class="stat-label">Years Exp.</div></div>
+          <div class="stat-box"><div class="stat-num">6</div><div class="stat-label">Projects</div></div>
+          <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">Certifications</div></div>
+          <div class="stat-box"><div class="stat-num">CA</div><div class="stat-label">Inter (ICAI)</div></div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Tally Prime</span><span class="skill-tag">SAP FICO</span><span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Advanced Excel</span><span class="skill-tag">GST Filing</span><span class="skill-tag">TDS Compliance</span>
+          <span class="skill-tag">VBA &amp; Macros</span><span class="skill-tag">Financial Reporting</span><span class="skill-tag">Data Analysis</span><span class="skill-tag">Bookkeeping</span>
+        </div>
+        <div class="ach-wrap">
+          <p class="ach-label">Achievements &amp; Extra-Curriculars</p>
+          <ul class="ach-list">
+            <li><span class="ach-bullet"></span>Ranked in Top 10% of students in college based on academic performance</li>
+            <li><span class="ach-bullet"></span>Served as Head Boy and Student Pupil Leader — led and managed large student teams</li>
+            <li><span class="ach-bullet"></span>Represented school at Zonal and State-Level Chess Championships on three occasions</li>
+            <li><span class="ach-bullet"></span>Gold Medal — District-Level Cyber &amp; Mathematics Olympiad; recognized twice in Cyber Olympiad</li>
+            <li><span class="ach-bullet"></span>Balanced full-time academics and work commitments throughout B.Com and CA Intermediate</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <p class="section-eyebrow"><span class="num">02</span>&nbsp;&nbsp;Experience &amp; Education</p>
+    <h2 class="section-title">My <em>Journey</em></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="tl-date">2025 &ndash; 2027</p>
+        <h3 class="tl-role">CA Intermediate (IPCC)</h3>
+        <p class="tl-company">The Institute of Chartered Accountants of India (ICAI)</p>
+        <p class="tl-desc">Pursuing CA Intermediate with focus on Accounts, Taxation, Audit, Financial Management, and Corporate &amp; Business Law.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="tl-date">Dec 2022 &ndash; Apr 2023</p>
+        <h3 class="tl-role">Accounts &amp; Social Media Marketing Intern</h3>
+        <p class="tl-company">Technicare Service Center &middot; Virtual</p>
+        <p class="tl-desc">Maintained ledgers and financial records in Tally ERP9. Prepared and managed invoices using MS Excel. Handled bookkeeping and accounting activities. Designed social media creatives, supported digital marketing campaigns, and improved team communication processes.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="tl-date">Jan 2022 &ndash; Nov 2022</p>
+        <h3 class="tl-role">Operations &amp; Accounts Executive</h3>
+        <p class="tl-company">Angbooti &middot; Virtual</p>
+        <p class="tl-desc">Managed day-to-day business operations and maintained books of accounts accurately. Processed invoices, handled payment tracking and reconciliation, and prepared financial reports. Recruited, trained, and supervised a team of 15 interns. Coordinated cross-functional teams to meet project objectives.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="tl-date">2021 &ndash; 2024</p>
+        <h3 class="tl-role">B.Com (Hons.) in Accounts</h3>
+        <p class="tl-company">BSK College, Dhanbad &middot; 60%</p>
+        <p class="tl-desc">Graduated with focus on Accounting, Financial Management, Taxation, and Business Law. Balanced academics with parallel professional commitments throughout the degree.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <p class="section-eyebrow"><span class="num">03</span>&nbsp;&nbsp;Projects</p>
+    <h2 class="section-title">Things I've <em>Built</em></h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="proj-num">01</div>
+        <h3 class="proj-title">Financial Statement Dashboard</h3>
+        <p class="proj-desc">Interactive P&amp;L, Balance Sheet, and Cash Flow dashboards. Automated financial performance analysis and management reporting using DAX measures.</p>
+        <div class="proj-stack"><span class="proj-tag">Power BI</span><span class="proj-tag">DAX</span><span class="proj-tag">Financial Analysis</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-num">02</div>
+        <h3 class="proj-title">Financial Reporting Automation</h3>
+        <p class="proj-desc">Automated preparation of financial reports using Excel Macros and VBA, significantly reducing manual effort and improving reporting accuracy.</p>
+        <div class="proj-stack"><span class="proj-tag">Excel VBA</span><span class="proj-tag">Macros</span><span class="proj-tag">Automation</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-num">03</div>
+        <h3 class="proj-title">AR &amp; AP Management System</h3>
+        <p class="proj-desc">Automated tracking of customer receivables and vendor payables. Generated aging analysis and payment monitoring reports using XLOOKUP and Pivot Tables.</p>
+        <div class="proj-stack"><span class="proj-tag">Excel</span><span class="proj-tag">XLOOKUP</span><span class="proj-tag">Pivot Tables</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-num">04</div>
+        <h3 class="proj-title">GST &amp; Invoice Management System</h3>
+        <p class="proj-desc">Invoice and GST tracking system with automated tax calculations, ITC tracking, and reconciliation reports for full compliance.</p>
+        <div class="proj-stack"><span class="proj-tag">Excel</span><span class="proj-tag">GST Compliance</span><span class="proj-tag">Reporting</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-num">05</div>
+        <h3 class="proj-title">Sales &amp; Revenue Analytics Dashboard</h3>
+        <p class="proj-desc">Analyzed sales trends, profitability, customer performance, and regional revenue. KPI-based dashboards for business decision-making.</p>
+        <div class="proj-stack"><span class="proj-tag">Power BI</span><span class="proj-tag">Power Query</span><span class="proj-tag">DAX</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-num">06</div>
+        <h3 class="proj-title">Bank Reconciliation Automation System</h3>
+        <p class="proj-desc">Automated system to match bank statements with ledger entries, identify unmatched transactions, generate reconciliation reports, and reduce manual reconciliation time.</p>
+        <div class="proj-stack"><span class="proj-tag">Excel</span><span class="proj-tag">Power Query</span><span class="proj-tag">XLOOKUP</span><span class="proj-tag">Pivot Tables</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="container">
+    <p class="section-eyebrow"><span class="num">04</span>&nbsp;&nbsp;Certifications</p>
+    <h2 class="section-title">My <em>Learnings</em></h2>
+    <div class="certs-grid">
+      <div class="cert-card"><p class="cert-source">Income Tax</p><p class="cert-title">TDS Filing &amp; Compliance</p><p class="cert-date">Jun 2026 &ndash; Present &middot; Self-Learning</p></div>
+      <div class="cert-card"><p class="cert-source">ERP</p><p class="cert-title">SAP FICO S/4HANA</p><p class="cert-date">May 2026 &ndash; Present &middot; Self-Learning</p></div>
+      <div class="cert-card"><p class="cert-source">Indirect Tax</p><p class="cert-title">GST Filing &amp; Compliance</p><p class="cert-date">Apr 2026 &ndash; Present &middot; Self-Learning</p></div>
+      <div class="cert-card"><p class="cert-source">Accounting Software</p><p class="cert-title">Tally Prime — Practical Training</p><p class="cert-date">May 2024 &ndash; Jul 2024 &middot; Self-Learning</p></div>
+      <div class="cert-card"><p class="cert-source">Data &amp; Automation</p><p class="cert-title">Advanced Excel, Macros &amp; Excel VBA</p><p class="cert-date">Jan 2023 &middot; Udemy</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <p class="section-eyebrow"><span class="num">05</span>&nbsp;&nbsp;Contact</p>
+    <h2 class="section-title">Get In <em>Touch</em></h2>
+    <div class="contact-card">
+      <p class="contact-desc">Open to Accounts, Taxation, GST, Finance, and Data Analytics roles. Based in Kolkata — I typically reply within 24 hours.</p>
+      <a href="mailto:workemailharshit@gmail.com" class="contact-email-link">workemailharshit@gmail.com &rarr;</a>
+      <div class="contact-chips">
+        <a href="tel:+919142985813" class="chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.9 15.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.81 5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 12.6a16 16 0 006.29 6.29l.96-.96a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 91429 85813
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+          LinkedIn
+        </a>
+        <a href="HarshitSinha_InternshalaResume.pdf" target="_blank" class="chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; Built by <span>Harshit Sinha</span> &nbsp;&middot;&nbsp; Kolkata &nbsp;&middot;&nbsp; 2025</p>
+</footer>
+
+</body>
+</html>
